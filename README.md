@@ -1,4 +1,4 @@
-# Detection-Lab
+# Detection-Lab - Categorizing Phishing Emails
 
 ## Objective
 
