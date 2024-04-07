@@ -1,1 +1,82 @@
+# Detection-Lab - Manual Artifact Extraction 
 
+## Objective
+
+Retrieve key indicators and artifacts from phishing emails using manual methods and tools.
+
+### Skills Learned
+
+- Manual collection of artifacts from phishing emails.
+- Usage of email clients like Mozilla Thunderbird for viewing email content.
+- Utilization of text editors such as Sublime Text 2 for examining .eml files directly.
+- Understanding the significance of manually collecting artifacts in phishing analysis.
+- Adaptation to situations where automated tools for retrieving email, web, and file-based artifacts may not be available.
+- Core skill development for phishing analysis.
+
+### Tools Used
+
+- Mozilla Thunderbird email client for viewing emails.
+- Sublime Text 2 text editor for direct inspection of .eml files.
+- PowerShell for additional tasks.
+- Online services for WHOis lookup (whois.domaintools.com).
+
+## Steps
+
+![c29d138b22bd83eb3dbc058078d6909d16ea478a4778abc8e96b5d35bd4e683f90f565e67274f69c3618bca1f1af](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/b477439f-3266-475b-8178-6ac685d5170d)
+- Opening the email in Sublime Text I could use the Find feature (CTRL+F) to search for “From”.
+
+![a2e6cabef06eb995e8d0afdc865286e36f918160e83a5658a1d719008b5ace0adc0e7838d8f5189d00b63768ec8c](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/cad90295-5df6-4d84-9d14-15ac0f60f90a)
+- For this, I looked for the “To” field and its value.
+
+![67550c8ca23ee77f3836587dfaf220b04bdd3e132fbdda6ecaafcf389f5bcc9cea47e5cb4750dcf2531be556df86](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/10bdd490-8720-4bce-aec4-da323133c895)
+- I looked for the “Subject” field and its value.
+
+![2d2da11fd2589431d692777f821cf72814489822cd9ea0ca8eb98917d27b5367fd5a5f60d7b87e7770791d41e29e](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/a9390448-e030-475c-af49-2a62502c754c)
+- I looked for the “Date” field and its value.
+
+![5bad9ccf9a122c71977a476f33f8a6e64b4f9b7116acd51a6e60b5cfe40fd0f80c25e6b95059a4c8f3f913e7c9eb](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/7a851890-18e3-4809-a093-9dbcf6d00733)
+- I've searched for the “X-Sender-IP” field and its value.
+
+![6450e251ebd6b77937fb4a39aa4079608e679c0b825d8d892b0731846d8cce68ef1a0d79a1386e66c051f9693646](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/76293fa1-a175-4ed7-9aa9-3be802713c31)
+- Taking the IP from the previous question I opened the site https://whois.domaintools.com and performed a search. I could see the resolved hostname below.
+
+![c62789480d6b9624cf464b1c9fac1db8b4734ae95d822ed700858f3636457cc3b8a9caafbef5ae3e2eb0fc7bdd46](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/3fcaa6e9-c1b5-4a5a-913a-e1d407c7b0b9)
+- Right-click the hyperlink when viewing the file in an email client, and select ‘Copy Hyperlink’ (or a similar option).
+
+![65a63d5262e78a5af01c7137ad5d696ad363396ceaea5cafde17b2a89c4f01a2ff6970a13d3c396df523e14fa6fb](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/e370a714-8023-4d7d-9ef7-e8e009dbe4e2)
+![ebac7eb38943825eeca0e238f8b3498d041a5581d7ca0c9ec133f5bb86bba09731d4d71ad73ce16037e736396af8](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/c8a281c5-d6a6-4d04-b95d-f909cafc1d93)
+![c961a3248ef6d5005c6bcc171823403a1a99367de5cee337aa441c7ff09cc04f0781234649d659b032d618163fc8](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/414c423f-ead3-46b0-a18d-bb8522783d2b)
+- To find this, I could either right-click the link in the email and select ‘copy link location,’ then paste it into a program such as Notepad to view the URL text, or search for ‘http’ or ‘https’ in the email file until I locate the correct link. The term ‘root domain’ essentially refers to the domain name of the URL, excluding the specific resource. In this email, the URL is hxxps://www.thiswouldbeamalicioussite.com/index/2020/j411/NetflixLogin.php? (we've replaced https with hxxps to prevent it from becoming hyperlinked), so the root domain is ‘thiswouldbeamalicioussite.com’.
+
+![54bd12eeb34fed06c44b7b52c5d191ccab8e3996764152afc988d4d68930d8aa6985c11328d284715856f398ab13](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/a4180662-b4f0-42f5-86fe-48cee69d0e40)
+- Same as before, I used Find and search for “From”.
+
+![24f700c0102a36ab7a536d1b9a8d93a6cc8390c75db389a61afdf08fd70aa115952b890481d9a0ef88b1081be071](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/7c4e3fba-f713-4248-b836-93dd0a0444a2)
+- Searched for the “To” field and value.
+
+![c9332658e7328bf2d322fd2660ef2355da7281e81036f8deb558742d3f2709e96aaa4bb382806f2bbcfebfda29b1](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/2eab69a5-002e-4bc9-b67c-d0b2739ac609)
+- Searched for the “Subject” field and value.
+
+![814ce34a8446b41ba7e8a650703f5379f83ff006c43738cbe998c91d9323d3d2e9bf7c466a74564bbe0bf5cf8b30](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/d5ab536c-2170-4031-bafc-395850c0db0e)
+- Searched for the “Date” field and value.
+
+![b8f46e23c75b02d06356ba61d8e768e342ac4b0d2ee5e245266535185f566c4fa6441a5d0e9374aa5c769244e464](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/471f939a-70c5-4d50-a32b-94c33ffd747b)
+- Searched for the “X-Sender-IP” field and value.
+
+![7c9026b6b7448e650ce2269c4b3f68bb06180260941ddde12bfadf29f0d1c3a943f5325302b74597e6a2dea7572d](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/71b51a74-2c56-4291-ac23-81e3eb8b023a)
+- Using the IP from the previous question, we'll submit it to https://whois.domaintools.com.
+
+![1ad38a2bbed8db1c349a97f3114cbf9b1488af6b04afaa089d64292d21ccd3a4639693daf7f0d42793997ee15eca](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/0e8ec7db-2e53-4965-b4bf-88daf3ed8884)
+- There are two ways I could get the file name. From within the text editor I could search for “filename”.
+
+![82d00b520d7dfb4f8553c96185e737e971ba785bdfa1bfe7e756397d307b2da9e4f64ff81d3cfcaefdd7c0b73709](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/8b6d635c-36ee-49f4-97df-b2ef5223da7a)
+- And within my email client, I could see the attachment name displayed somewhere in the interface. The location and style varied depending on the client. For instance, in Outlook, the attachment details were typically shown at the top of the email. In Thunderbird, however, I found this information at the bottom.
+
+![4c72a1863ca9b7e1e32e642b48cfdc7c24a16d28e682be280f6f1797aba61e11c3a5b25ae59e8d1f8b7e8d6752fe](https://github.com/ayalasecurity/Detection-Lab/assets/157613993/5a127d3b-9041-467c-bcf2-f3ab4203c1ec)
+- In Thunderbird, I could right-click the attachment and click Save-As to save it to the Desktop. After that, I opened a PowerShell window and used the Get-FileHash cmdlet to retrieve the MD5 and SHA256 hashes. Since SHA256 is the default hashing algorithm, I didn't need to specify it, but I had to do so for MD5.
+
+
+- *Ref 1: - Mozilla Thunderbird email client for viewing emails.*
+- *Ref 2: - Sublime Text 2 text editor for direct inspection of .eml files.*
+- *Ref 3: - PowerShell for additional tasks.*
+- *Ref 4: - Online services for WHOis lookup (whois.domaintools.com)*
